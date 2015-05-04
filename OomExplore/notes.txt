@@ -1,0 +1,7 @@
+
+
+If your new to OOM development, you should read:
+	http://msdn.microsoft.com/en-us/library/bb610102.aspx
+	http://www.microsoft.com/downloads/details.aspx?FamilyID=59daebaa-bed4-4282-a28c-b864d8bfa513&displaylang=en
+
+ 
