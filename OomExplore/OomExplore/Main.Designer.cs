@@ -1,6 +1,6 @@
 namespace OomExplore
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -97,10 +97,9 @@ namespace OomExplore
             this.tvFolders.ContextMenuStrip = this.cmsFolders;
             this.tvFolders.FullRowSelect = true;
             this.tvFolders.HideSelection = false;
-            this.tvFolders.Location = new System.Drawing.Point(4, 0);
-            this.tvFolders.Margin = new System.Windows.Forms.Padding(4);
+            this.tvFolders.Location = new System.Drawing.Point(3, 0);
             this.tvFolders.Name = "tvFolders";
-            this.tvFolders.Size = new System.Drawing.Size(312, 344);
+            this.tvFolders.Size = new System.Drawing.Size(234, 280);
             this.tvFolders.TabIndex = 0;
             this.tvFolders.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvFolders_BeforeExpand);
             this.tvFolders.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvFolders_AfterSelect);
@@ -121,26 +120,26 @@ namespace OomExplore
             this.cmsFoldersStoreProperties,
             this.cmsFolderAccountForFolder});
             this.cmsFolders.Name = "cmsFolders";
-            this.cmsFolders.Size = new System.Drawing.Size(256, 268);
+            this.cmsFolders.Size = new System.Drawing.Size(215, 246);
             // 
             // cmsFoldersProperties
             // 
             this.cmsFoldersProperties.Name = "cmsFoldersProperties";
-            this.cmsFoldersProperties.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersProperties.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersProperties.Text = "Properties";
             this.cmsFoldersProperties.Click += new System.EventHandler(this.cmsFoldersProperties_Click);
             // 
             // cmsFoldersCopyToFolder
             // 
             this.cmsFoldersCopyToFolder.Name = "cmsFoldersCopyToFolder";
-            this.cmsFoldersCopyToFolder.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersCopyToFolder.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersCopyToFolder.Text = "Copy To Folder";
             this.cmsFoldersCopyToFolder.Click += new System.EventHandler(this.cmsFoldersCopyToFolder_Click);
             // 
             // cmsFoldersMoveToFolder
             // 
             this.cmsFoldersMoveToFolder.Name = "cmsFoldersMoveToFolder";
-            this.cmsFoldersMoveToFolder.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersMoveToFolder.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersMoveToFolder.Text = "MoveTo Folder";
             this.cmsFoldersMoveToFolder.Click += new System.EventHandler(this.cmsFoldersMoveToFolder_Click);
             // 
@@ -148,14 +147,15 @@ namespace OomExplore
             // 
             this.cmsFoldersDelete.Enabled = false;
             this.cmsFoldersDelete.Name = "cmsFoldersDelete";
-            this.cmsFoldersDelete.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersDelete.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersDelete.Text = "Delete";
+            this.cmsFoldersDelete.Visible = false;
             this.cmsFoldersDelete.Click += new System.EventHandler(this.cmsFoldersDelete_Click);
             // 
             // cmsFoldersNewFolder
             // 
             this.cmsFoldersNewFolder.Name = "cmsFoldersNewFolder";
-            this.cmsFoldersNewFolder.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersNewFolder.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersNewFolder.Text = "New Folder";
             this.cmsFoldersNewFolder.Click += new System.EventHandler(this.cmsFoldersNewFolder_Click);
             // 
@@ -163,45 +163,49 @@ namespace OomExplore
             // 
             this.cmsFoldersRenameFolder.Enabled = false;
             this.cmsFoldersRenameFolder.Name = "cmsFoldersRenameFolder";
-            this.cmsFoldersRenameFolder.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersRenameFolder.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersRenameFolder.Text = "Rename Folder";
+            this.cmsFoldersRenameFolder.Visible = false;
             this.cmsFoldersRenameFolder.Click += new System.EventHandler(this.cmsFoldersRenameFolder_Click);
             // 
             // cmsFoldersMoveAllItems
             // 
             this.cmsFoldersMoveAllItems.Enabled = false;
             this.cmsFoldersMoveAllItems.Name = "cmsFoldersMoveAllItems";
-            this.cmsFoldersMoveAllItems.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersMoveAllItems.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersMoveAllItems.Text = "Move All Items";
+            this.cmsFoldersMoveAllItems.Visible = false;
             this.cmsFoldersMoveAllItems.Click += new System.EventHandler(this.cmsFoldersMoveAllItems_Click);
             // 
             // cmsFoldersCopyAllIItems
             // 
             this.cmsFoldersCopyAllIItems.Enabled = false;
             this.cmsFoldersCopyAllIItems.Name = "cmsFoldersCopyAllIItems";
-            this.cmsFoldersCopyAllIItems.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersCopyAllIItems.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersCopyAllIItems.Text = "Copy All Items";
+            this.cmsFoldersCopyAllIItems.Visible = false;
             this.cmsFoldersCopyAllIItems.Click += new System.EventHandler(this.cmsFoldersCopyAllIItems_Click);
             // 
             // cmsFoldersCopyMoveDeleteAllItems
             // 
             this.cmsFoldersCopyMoveDeleteAllItems.Enabled = false;
             this.cmsFoldersCopyMoveDeleteAllItems.Name = "cmsFoldersCopyMoveDeleteAllItems";
-            this.cmsFoldersCopyMoveDeleteAllItems.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersCopyMoveDeleteAllItems.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersCopyMoveDeleteAllItems.Text = "CopyMoveDelete All Items";
+            this.cmsFoldersCopyMoveDeleteAllItems.Visible = false;
             this.cmsFoldersCopyMoveDeleteAllItems.Click += new System.EventHandler(this.cmsFoldersCopyMoveDeleteAllItems_Click);
             // 
             // cmsFoldersStoreProperties
             // 
             this.cmsFoldersStoreProperties.Name = "cmsFoldersStoreProperties";
-            this.cmsFoldersStoreProperties.Size = new System.Drawing.Size(255, 24);
+            this.cmsFoldersStoreProperties.Size = new System.Drawing.Size(214, 22);
             this.cmsFoldersStoreProperties.Text = "Store Properties";
             this.cmsFoldersStoreProperties.Click += new System.EventHandler(this.cmsFoldersStoreProperties_Click);
             // 
             // cmsFolderAccountForFolder
             // 
             this.cmsFolderAccountForFolder.Name = "cmsFolderAccountForFolder";
-            this.cmsFolderAccountForFolder.Size = new System.Drawing.Size(255, 24);
+            this.cmsFolderAccountForFolder.Size = new System.Drawing.Size(214, 22);
             this.cmsFolderAccountForFolder.Text = "Display Account for Folder";
             this.cmsFolderAccountForFolder.Click += new System.EventHandler(this.cmsFolderAccountForFolder_Click);
             // 
@@ -213,10 +217,9 @@ namespace OomExplore
             this.listView1.ContextMenuStrip = this.cmsItems;
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(4, 4);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(632, 340);
+            this.listView1.Size = new System.Drawing.Size(474, 277);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -235,13 +238,13 @@ namespace OomExplore
             this.cmsItemsSaveToFile,
             this.cmsItemsOpen});
             this.cmsItems.Name = "cmsFolders";
-            this.cmsItems.Size = new System.Drawing.Size(180, 220);
+            this.cmsItems.Size = new System.Drawing.Size(156, 224);
             this.cmsItems.Opening += new System.ComponentModel.CancelEventHandler(this.cmsItems_Opening);
             // 
             // cmsItemsProperties
             // 
             this.cmsItemsProperties.Name = "cmsItemsProperties";
-            this.cmsItemsProperties.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsProperties.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsProperties.Text = "Properties";
             this.cmsItemsProperties.Click += new System.EventHandler(this.cmsItemsProperties_Click);
             // 
@@ -249,61 +252,67 @@ namespace OomExplore
             // 
             this.cmsItemsCopyToFolder.Enabled = false;
             this.cmsItemsCopyToFolder.Name = "cmsItemsCopyToFolder";
-            this.cmsItemsCopyToFolder.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsCopyToFolder.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsCopyToFolder.Text = "Copy To Folder";
+            this.cmsItemsCopyToFolder.Visible = false;
             this.cmsItemsCopyToFolder.Click += new System.EventHandler(this.cmsItemsCopyToFolder_Click);
             // 
             // cmsItemsMoveToFolder
             // 
             this.cmsItemsMoveToFolder.Enabled = false;
             this.cmsItemsMoveToFolder.Name = "cmsItemsMoveToFolder";
-            this.cmsItemsMoveToFolder.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsMoveToFolder.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsMoveToFolder.Text = "MoveTo Folder";
+            this.cmsItemsMoveToFolder.Visible = false;
             this.cmsItemsMoveToFolder.Click += new System.EventHandler(this.cmsItemsMoveToFolder_Click);
             // 
             // cmsItemsDelete
             // 
             this.cmsItemsDelete.Enabled = false;
             this.cmsItemsDelete.Name = "cmsItemsDelete";
-            this.cmsItemsDelete.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsDelete.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsDelete.Text = "Delete";
+            this.cmsItemsDelete.Visible = false;
             this.cmsItemsDelete.Click += new System.EventHandler(this.cmsItemsDelete_Click);
             // 
             // cmsItemsRename
             // 
             this.cmsItemsRename.Enabled = false;
             this.cmsItemsRename.Name = "cmsItemsRename";
-            this.cmsItemsRename.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsRename.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsRename.Text = "Rename";
+            this.cmsItemsRename.Visible = false;
             this.cmsItemsRename.Click += new System.EventHandler(this.cmsItemsRename_Click);
             // 
             // cmsItemsMoveAllItems
             // 
             this.cmsItemsMoveAllItems.Enabled = false;
             this.cmsItemsMoveAllItems.Name = "cmsItemsMoveAllItems";
-            this.cmsItemsMoveAllItems.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsMoveAllItems.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsMoveAllItems.Text = "Move Items";
+            this.cmsItemsMoveAllItems.Visible = false;
             this.cmsItemsMoveAllItems.Click += new System.EventHandler(this.cmsItemsMoveAllItems_Click);
             // 
             // cmsItemsCopyAllItems
             // 
             this.cmsItemsCopyAllItems.Enabled = false;
             this.cmsItemsCopyAllItems.Name = "cmsItemsCopyAllItems";
-            this.cmsItemsCopyAllItems.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsCopyAllItems.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsCopyAllItems.Text = "Copy All Items";
+            this.cmsItemsCopyAllItems.Visible = false;
             this.cmsItemsCopyAllItems.Click += new System.EventHandler(this.cmsItemsCopyAllItems_Click);
             // 
             // cmsItemsSaveToFile
             // 
             this.cmsItemsSaveToFile.Name = "cmsItemsSaveToFile";
-            this.cmsItemsSaveToFile.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsSaveToFile.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsSaveToFile.Text = "Save To File";
             this.cmsItemsSaveToFile.Click += new System.EventHandler(this.cmsItemsSaveToFile_Click);
             // 
             // cmsItemsOpen
             // 
             this.cmsItemsOpen.Name = "cmsItemsOpen";
-            this.cmsItemsOpen.Size = new System.Drawing.Size(179, 24);
+            this.cmsItemsOpen.Size = new System.Drawing.Size(155, 22);
             this.cmsItemsOpen.Text = "Open";
             this.cmsItemsOpen.Click += new System.EventHandler(this.cmsItemsOpen_Click);
             // 
@@ -312,8 +321,7 @@ namespace OomExplore
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(16, 53);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 43);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -323,9 +331,8 @@ namespace OomExplore
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Size = new System.Drawing.Size(971, 348);
-            this.splitContainer1.SplitterDistance = 321;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(728, 283);
+            this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 2;
             // 
             // statusStrip1
@@ -335,10 +342,9 @@ namespace OomExplore
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 437);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 354);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1003, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(752, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -349,25 +355,25 @@ namespace OomExplore
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuMainAvailabilityInformation});
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(235, 28);
+            this.mnuMain.Size = new System.Drawing.Size(199, 26);
             // 
             // mnuMainAvailabilityInformation
             // 
             this.mnuMainAvailabilityInformation.Name = "mnuMainAvailabilityInformation";
-            this.mnuMainAvailabilityInformation.Size = new System.Drawing.Size(234, 24);
+            this.mnuMainAvailabilityInformation.Size = new System.Drawing.Size(198, 22);
             this.mnuMainAvailabilityInformation.Text = "Availability Information";
             this.mnuMainAvailabilityInformation.Click += new System.EventHandler(this.mnuMainAvailabilityInformation_Click);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(133, 20);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             // 
             // menuStrip1
             // 
@@ -378,7 +384,8 @@ namespace OomExplore
             this.mnuTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1003, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -388,13 +395,13 @@ namespace OomExplore
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFileExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(44, 24);
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(175, 24);
+            this.mnuFileExit.Size = new System.Drawing.Size(92, 22);
             this.mnuFileExit.Text = "E&xit";
             // 
             // mnuInfo
@@ -408,13 +415,13 @@ namespace OomExplore
             this.mnuInfoHiddenItems,
             this.mnuInfoApplicationInformation});
             this.mnuInfo.Name = "mnuInfo";
-            this.mnuInfo.Size = new System.Drawing.Size(47, 24);
+            this.mnuInfo.Size = new System.Drawing.Size(40, 20);
             this.mnuInfo.Text = "&Info";
             // 
             // mnuInfoAccountInformation
             // 
             this.mnuInfoAccountInformation.Name = "mnuInfoAccountInformation";
-            this.mnuInfoAccountInformation.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoAccountInformation.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoAccountInformation.Text = "&Account Information";
             this.mnuInfoAccountInformation.Click += new System.EventHandler(this.mnuInfoAccountInformation_Click);
             // 
@@ -425,42 +432,42 @@ namespace OomExplore
             this.mnuInfoExchUsersManager,
             this.mnuInfoExchUsersCurrentUserMemberOfDl});
             this.mnuInfoExchUsers.Name = "mnuInfoExchUsers";
-            this.mnuInfoExchUsers.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoExchUsers.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoExchUsers.Text = "Exchange Users";
             this.mnuInfoExchUsers.Click += new System.EventHandler(this.mnuInfoExchUsers_Click);
             // 
             // mnuInfoExchUsersCurrentUser
             // 
             this.mnuInfoExchUsersCurrentUser.Name = "mnuInfoExchUsersCurrentUser";
-            this.mnuInfoExchUsersCurrentUser.Size = new System.Drawing.Size(268, 24);
+            this.mnuInfoExchUsersCurrentUser.Size = new System.Drawing.Size(227, 22);
             this.mnuInfoExchUsersCurrentUser.Text = "Current &User";
             this.mnuInfoExchUsersCurrentUser.Click += new System.EventHandler(this.mnuInfoExchUsersCurrentUser_Click);
             // 
             // mnuInfoExchUsersManager
             // 
             this.mnuInfoExchUsersManager.Name = "mnuInfoExchUsersManager";
-            this.mnuInfoExchUsersManager.Size = new System.Drawing.Size(268, 24);
+            this.mnuInfoExchUsersManager.Size = new System.Drawing.Size(227, 22);
             this.mnuInfoExchUsersManager.Text = "User\'s Manager";
             this.mnuInfoExchUsersManager.Click += new System.EventHandler(this.mnuInfoExchUsersManager_Click);
             // 
             // mnuInfoExchUsersCurrentUserMemberOfDl
             // 
             this.mnuInfoExchUsersCurrentUserMemberOfDl.Name = "mnuInfoExchUsersCurrentUserMemberOfDl";
-            this.mnuInfoExchUsersCurrentUserMemberOfDl.Size = new System.Drawing.Size(268, 24);
+            this.mnuInfoExchUsersCurrentUserMemberOfDl.Size = new System.Drawing.Size(227, 22);
             this.mnuInfoExchUsersCurrentUserMemberOfDl.Text = "Current User DL Membership";
             this.mnuInfoExchUsersCurrentUserMemberOfDl.Click += new System.EventHandler(this.mnuInfoExchUsersCurrentUserMemberOfDl_Click);
             // 
             // frmInfoCategories
             // 
             this.frmInfoCategories.Name = "frmInfoCategories";
-            this.frmInfoCategories.Size = new System.Drawing.Size(237, 24);
+            this.frmInfoCategories.Size = new System.Drawing.Size(201, 22);
             this.frmInfoCategories.Text = "Categories";
             this.frmInfoCategories.Click += new System.EventHandler(this.frmInfoCategories_Click);
             // 
             // mnuInfoStores
             // 
             this.mnuInfoStores.Name = "mnuInfoStores";
-            this.mnuInfoStores.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoStores.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoStores.Text = "Stores";
             this.mnuInfoStores.Click += new System.EventHandler(this.mnuInfoStores_Click);
             // 
@@ -470,20 +477,20 @@ namespace OomExplore
             this.mnuInfoAddressListsForProfile,
             this.mnuInfoAddressListsEnumerateGal});
             this.mnuInfoAddressLists.Name = "mnuInfoAddressLists";
-            this.mnuInfoAddressLists.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoAddressLists.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoAddressLists.Text = "Address Lists";
             // 
             // mnuInfoAddressListsForProfile
             // 
             this.mnuInfoAddressListsForProfile.Name = "mnuInfoAddressListsForProfile";
-            this.mnuInfoAddressListsForProfile.Size = new System.Drawing.Size(233, 24);
+            this.mnuInfoAddressListsForProfile.Size = new System.Drawing.Size(197, 22);
             this.mnuInfoAddressListsForProfile.Text = "Address Lists for Profile";
             this.mnuInfoAddressListsForProfile.Click += new System.EventHandler(this.mnuInfoAddressListsForProfile_Click);
             // 
             // mnuInfoAddressListsEnumerateGal
             // 
             this.mnuInfoAddressListsEnumerateGal.Name = "mnuInfoAddressListsEnumerateGal";
-            this.mnuInfoAddressListsEnumerateGal.Size = new System.Drawing.Size(233, 24);
+            this.mnuInfoAddressListsEnumerateGal.Size = new System.Drawing.Size(197, 22);
             this.mnuInfoAddressListsEnumerateGal.Text = "Enumerate GAL";
             this.mnuInfoAddressListsEnumerateGal.Click += new System.EventHandler(this.mnuInfoAddressListsEnumerateGal_Click);
             // 
@@ -492,20 +499,20 @@ namespace OomExplore
             this.mnuInfoHiddenItems.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuInfoHiddenItemsCalendarWorkingHours});
             this.mnuInfoHiddenItems.Name = "mnuInfoHiddenItems";
-            this.mnuInfoHiddenItems.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoHiddenItems.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoHiddenItems.Text = "Hidden Items";
             // 
             // mnuInfoHiddenItemsCalendarWorkingHours
             // 
             this.mnuInfoHiddenItemsCalendarWorkingHours.Name = "mnuInfoHiddenItemsCalendarWorkingHours";
-            this.mnuInfoHiddenItemsCalendarWorkingHours.Size = new System.Drawing.Size(236, 24);
+            this.mnuInfoHiddenItemsCalendarWorkingHours.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoHiddenItemsCalendarWorkingHours.Text = "Calendar WorkingHours";
             this.mnuInfoHiddenItemsCalendarWorkingHours.Click += new System.EventHandler(this.mnuInfoHiddenItemsCalendarWorkingHours_Click);
             // 
             // mnuInfoApplicationInformation
             // 
             this.mnuInfoApplicationInformation.Name = "mnuInfoApplicationInformation";
-            this.mnuInfoApplicationInformation.Size = new System.Drawing.Size(237, 24);
+            this.mnuInfoApplicationInformation.Size = new System.Drawing.Size(201, 22);
             this.mnuInfoApplicationInformation.Text = "Application Information";
             this.mnuInfoApplicationInformation.Click += new System.EventHandler(this.mnuInfoApplicationInformation_Click);
             // 
@@ -514,28 +521,27 @@ namespace OomExplore
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsSearch});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(57, 24);
+            this.mnuTools.Size = new System.Drawing.Size(48, 20);
             this.mnuTools.Text = "Tools";
             // 
             // mnuToolsSearch
             // 
             this.mnuToolsSearch.Name = "mnuToolsSearch";
-            this.mnuToolsSearch.Size = new System.Drawing.Size(175, 24);
+            this.mnuToolsSearch.Size = new System.Drawing.Size(109, 22);
             this.mnuToolsSearch.Text = "Search";
             this.mnuToolsSearch.Click += new System.EventHandler(this.mnuToolsSearch_Click);
             // 
-            // Form1
+            // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 463);
+            this.ClientSize = new System.Drawing.Size(752, 376);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Main";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsFolders.ResumeLayout(false);
             this.cmsItems.ResumeLayout(false);
