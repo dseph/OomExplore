@@ -238,7 +238,7 @@ namespace OomExplore
             this.cmsItemsSaveToFile,
             this.cmsItemsOpen});
             this.cmsItems.Name = "cmsFolders";
-            this.cmsItems.Size = new System.Drawing.Size(156, 224);
+            this.cmsItems.Size = new System.Drawing.Size(156, 202);
             this.cmsItems.Opening += new System.ComponentModel.CancelEventHandler(this.cmsItems_Opening);
             // 
             // cmsItemsProperties
@@ -367,8 +367,7 @@ namespace OomExplore
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // toolStripProgressBar1
             // 
@@ -541,7 +540,7 @@ namespace OomExplore
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "OOM Explore";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsFolders.ResumeLayout(false);
             this.cmsItems.ResumeLayout(false);

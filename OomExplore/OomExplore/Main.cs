@@ -25,8 +25,11 @@ namespace OomExplore
         
         string _DefaultMessageFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
         string _DefaultContactFilter = "[MessageClass]>='IPM.Contact' AND [MessageClass]<='IPM.Contact.ZZZ'";
+        string _DefaultAppointmentFilter = "[MessageClass]>='IPM.Appointment' AND [MessageClass]<='IPM.Appointment.ZZZ'";
+        string _DefaultTaskFilter = "[MessageClass]>='IPM.Appointment' AND [MessageClass]<='IPM.Task.ZZZ'";
         string _UseMessageFilter = string.Empty;
-        string _UseContactFilter = string.Empty; 
+        string _UseContactFilter = string.Empty;
+        string _UseAppointmentFilter = string.Empty; 
 
         public Main()
         {
@@ -38,6 +41,7 @@ namespace OomExplore
 
             _UseMessageFilter = _DefaultMessageFilter;
             _UseContactFilter = _DefaultContactFilter;
+            _UseAppointmentFilter = _DefaultAppointmentFilter;
 
             _oApp = new Microsoft.Office.Interop.Outlook.Application();
             _oNS = _oApp.GetNamespace("mapi");
@@ -86,8 +90,9 @@ namespace OomExplore
                     _CurrentStoreId = oFolderTag.StoreID;
                     _CurrentFolderId = oFolderTag.EntryID;
 
-                LoadViewForFolder(e.Node.SelectedImageIndex, ref listView1);
-                if (e.Node.SelectedImageIndex != 1)
+                    LoadViewForFolder(e.Node.SelectedImageIndex, ref listView1);
+                    //LoadViewForFolder(oFolderTag.DefaultMessageClass, ref listView1);
+                    if (e.Node.SelectedImageIndex != 1)
                     listView1.ContextMenu = null;
                 else
                     listView1.ContextMenuStrip = cmsItems;
@@ -95,31 +100,272 @@ namespace OomExplore
  
         }
 
+        //private void LoadViewForFolder(string sDefaultFolderClass, ref ListView oListView)
+        //{
 
+        //    //if (sDefaultFolderClass == "xxxx")
+        //    //{
+        //    //    LoadViewForStoreFolder(ref oListView);
+        //    //}
+
+        //    if (sDefaultFolderClass == "IPM.Note")
+        //    {
+        //        string sUseFilter = string.Empty;
+        //        //sUseFilter = "@SQL=[MessageClass] like 'IPM.Note%";
+        //        //sUseFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
+        //        LoadViewForMessageFolder(ref oListView, _UseMessageFilter);
+
+        //    }
+
+        //    if (sDefaultFolderClass == "IPM.Contact")
+        //    {
+        //        LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+        //    }
+        //}
 
 
         private void LoadViewForFolder(int iFolderType, ref ListView oListView)
         {
-
-            if (iFolderType == 1)
+            switch(iFolderType)
             {
-                LoadViewForStoreFolder(ref oListView); 
+                case 1:
+                    LoadViewForStoreFolder(ref oListView);
+                    break;
+                case 2:     // "IPM.Note"
+                    LoadViewForMessageFolder(ref oListView, _UseMessageFilter);
+                    break;
+                case 3:     // "IPM.Contact"
+                    LoadViewForContactFolder(ref oListView, _UseContactFilter);
+                    break;
+                case 4:     // "IPM.Appointment"
+                   LoadViewForAppointmentFolder(ref oListView, _UseAppointmentFilter);
+                    break;
+                case 5:     // "IPM.Task"
+                    LoadViewForDefault(ref oListView);
+                    break;
+                case 6:     // "IPM.StickyNote"
+                    LoadViewForDefault(ref oListView);
+                    break;
+                case 7:     // "IPM.Activity"
+                    LoadViewForDefault(ref oListView);
+                    break;
+                default:
+                    LoadViewForDefault(ref oListView);
+                    break;
             }
+            //if (iFolderType == 1)
+            //{
+            //    LoadViewForStoreFolder(ref oListView); 
+            //}
 
-            if (iFolderType == 2)
-            {
-                string sUseFilter = string.Empty;
-                //sUseFilter = "@SQL=[MessageClass] like 'IPM.Note%";
-                //sUseFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
-                LoadViewForMessageFolder(ref oListView, _UseMessageFilter);
+            //if (iFolderType == 2)  // "IPM.Contact"
+            //{
+            //    string sUseFilter = string.Empty;
+            //    //sUseFilter = "@SQL=[MessageClass] like 'IPM.Note%";
+            //    //sUseFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
+            //    LoadViewForMessageFolder(ref oListView, _UseMessageFilter);
                 
-            }
+            //}
 
-            if (iFolderType == 3)
+            //if (iFolderType == 3)  // "IPM.Contact"
+            //{
+            //    LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+            //}
+
+            //if (iFolderType == 4)  // "IPM.Appointment"
+            //{
+            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+            //}
+
+            //if (iFolderType == 5)  // "IPM.Task"
+            //{
+            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+            //}
+
+            //if (iFolderType == 6)  // "IPM.StickyNote"
+            //{
+            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+            //}
+
+            //if (iFolderType == 6)  // "IPM.Activity"
+            //{
+            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
+
+            //}
+
+      
+        }
+        private void LoadViewForDefault(ref ListView oListView )
+        {
+            oListView.Visible = false;
+        }
+
+        private void LoadViewForAppointmentFolder(ref ListView oListView, string sUseFilter)
+        {
+            //oListView.Visible = false;
+            oListView.Visible = false;
+
+            // Generic Items List.
+            Microsoft.Office.Interop.Outlook.MAPIFolder oFolder = _oNS.GetFolderFromID(_CurrentFolderId, _CurrentStoreId);
+
+            if (oFolder.DefaultItemType == Microsoft.Office.Interop.Outlook.OlItemType.olAppointmentItem)
             {
-                LoadViewForContactFolder(ref oListView, _UseContactFilter);
+                oListView.Clear();
+                oListView.View = System.Windows.Forms.View.Details;
+                oListView.GridLines = true;
+                //oListView.Dock = DockStyle.Fill;
+ 
+                oListView.Columns.Add("Subject", 150, HorizontalAlignment.Left);
+                oListView.Columns.Add("Location", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Start", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("StartTimeZone", 50, HorizontalAlignment.Left);
+                oListView.Columns.Add("End", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("EndTimeZone", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Organizer", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("RequiredAttendees", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("OptionalAttendees", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("MeetingStatus", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Size", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("EntryId", 100, HorizontalAlignment.Left);
 
+
+ 
+
+                Microsoft.Office.Interop.Outlook.AppointmentItem oAppointmentItem = null;
+                OutlookItem oItem = null;
+
+                string sFilter = string.Empty;
+                sUseFilter = _DefaultAppointmentFilter;
+                
+                Microsoft.Office.Interop.Outlook.Items oItems = null;
+                if (sUseFilter.Trim().Length != 0)
+                {
+                    oItems = oFolder.Items.Restrict(sUseFilter);
+                }
+                else
+                {
+                    oItems = oFolder.Items;
+                }
+
+                int iMax = oItems.Count;
+                toolStripProgressBar1.ProgressBar.Maximum = 100;
+                int iMod = (int)(iMax / 100);
+                if (iMod == 0)
+                    iMod = 1;
+                int iAt = 0;
+                for (int iCount = 1; iCount <= iMax; iCount++)
+                {
+
+                    if (iCount % iMod == 0)
+                    {
+                        iAt = (iCount / iMod);
+                        if (iAt <= 100)
+                            toolStripProgressBar1.ProgressBar.Value = (iCount / iMod);
+                    }
+                    
+ 
+                        oAppointmentItem = (AppointmentItem)oItems[iCount];
+
+                        if (oAppointmentItem.MessageClass == "IPM.Appointment")
+                            {
+                                try
+                                {
+
+                                // oContactItem = (Microsoft.Office.Interop.Outlook.ContactItem)oItems[iCount];
+                                //oContactItem = (Microsoft.Office.Interop.Outlook.ContactItem)oItem;
+
+                                ListViewItem oListItem = null;
+
+
+                                oListItem = new ListViewItem(oAppointmentItem.Subject, 0);
+                                oListItem.SubItems.Add(oAppointmentItem.Location);
+                                oListItem.SubItems.Add(oAppointmentItem.Start.ToString());
+
+                                if (oAppointmentItem.StartTimeZone != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.StartTimeZone.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                if (oAppointmentItem.End != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.End.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                if (oAppointmentItem.EndTimeZone != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.EndTimeZone.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                if (oAppointmentItem.Organizer != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.Organizer);
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                if (oAppointmentItem.RequiredAttendees != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.RequiredAttendees.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                if (oAppointmentItem.OptionalAttendees != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.OptionalAttendees.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+                                 
+                                oListItem.SubItems.Add(oAppointmentItem.IsRecurring.ToString());
+
+
+                                if (oAppointmentItem.MeetingStatus != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.MeetingStatus.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+                                oListItem.SubItems.Add(oAppointmentItem.Size.ToString());
+
+                                if (oAppointmentItem.EntryID != null)
+                                    oListItem.SubItems.Add(oAppointmentItem.EntryID.ToString());
+                                else
+                                    oListItem.SubItems.Add("");
+
+ 
+                                 
+
+                                ItemTag oItemTag = new ItemTag(_CurrentStoreId, oAppointmentItem.EntryID, oAppointmentItem.MessageClass);
+                                oListItem.Tag = oItemTag;
+                                oListView.Items.AddRange(new ListViewItem[] { oListItem });
+                            }
+                            catch (System.Exception Ex)
+                            {
+                                MessageBox.Show("Error", Ex.Message);
+                            }
+
+                            Marshal.ReleaseComObject(oAppointmentItem);
+                            oAppointmentItem = null;
+                        }
+                }
+
+                Marshal.ReleaseComObject(oItems);
+                Marshal.ReleaseComObject(oFolder);
+                oItems = null;
+                oFolder = null;
             }
+
+            oListView.Visible = true;
+            toolStripProgressBar1.ProgressBar.Value = 0;
+
+        }
+
+        private string StringIfNull(string sString)
+        {
+            if (sString == null)
+                return "";
+            else
+                return sString;
         }
 
 
@@ -179,14 +425,14 @@ namespace OomExplore
                             toolStripProgressBar1.ProgressBar.Value = (iCount / iMod);
                     }
                     
-                    //try
-                    //{
+ 
                     oContactItem = (ContactItem)oItems[iCount];
 
                     if (oContactItem.MessageClass == "IPM.Contact")
+                    {
+
+                        try
                         {
-
-
                             // oContactItem = (Microsoft.Office.Interop.Outlook.ContactItem)oItems[iCount];
                             //oContactItem = (Microsoft.Office.Interop.Outlook.ContactItem)oItem;
 
@@ -212,7 +458,13 @@ namespace OomExplore
 
                             Marshal.ReleaseComObject(oContactItem);
                             oContactItem = null;
+
                         }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Error", ex.Message);
+                        }
+                    }
                 }
 
                 Marshal.ReleaseComObject(oItems);
@@ -460,7 +712,7 @@ namespace OomExplore
                     oParentNode = null;
 
                     _CurrentStoreId = oFolderTag.StoreID;
-                    _CurrentFolderId = oFolderTag.EntryID;         
+                    _CurrentFolderId = oFolderTag.EntryID;
                     LoadViewForFolder(tvFolders.SelectedNode.SelectedImageIndex, ref listView1);
 
  
