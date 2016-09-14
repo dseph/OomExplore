@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OomExplore</RootNamespace>
     <AssemblyName>OomExplore</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -102,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxHelper.cs" />
+    <Compile Include="EmailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailForm.Designer.cs">
+      <DependentUpon>EmailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExchangeUsers.cs" />
     <Compile Include="FindItems.cs">
       <SubType>Form</SubType>
@@ -109,11 +115,23 @@
     <Compile Include="FindItems.Designer.cs">
       <DependentUpon>FindItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemPropertiesForm.Designer.cs">
+      <DependentUpon>ItemPropertiesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageForm.Designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OomAddressBook.cs" />
     <Compile Include="OomApplication.cs" />
@@ -148,12 +166,21 @@
       <DependentUpon>SomethingProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmailForm.resx">
+      <DependentUpon>EmailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindItems.resx">
       <DependentUpon>FindItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertiesForm.resx">
+      <DependentUpon>ItemPropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowInformation.resx">
       <SubType>Designer</SubType>

@@ -59,21 +59,35 @@ namespace OomExplore
             // https://msdn.microsoft.com/en-us/library/aa581347(v=exchg.80).aspx
             //Microsoft.Office.Interop.Outlook._NameSpace _oNS = null;
 
-            string sScope = txtFolders.Text;
+            string sFolderScope = txtFolders.Text.Trim();
+            string sSearch = txtSearchString.Text.Trim();
 
-            DateTime _StartTime = DateTime.Now;
+            if (sFolderScope.Length == 0)
+                MessageBox.Show("Folders need to be specified before searching.", "Entry required.");
+            else 
+                if (sSearch.Length == 0)
+                    MessageBox.Show("Search criteria needs to be specified before searching.", "Entry required.");
+                else
+                {
+                    DateTime _StartTime = DateTime.Now;
 
-            // https://msdn.microsoft.com/en-us/library/office/ff866933.aspx
-            Search advancedSearch = _oApp.AdvancedSearch(sScope, txtSearchString.Text, btnSearchSubfolders.Checked, Type.Missing); 
+                    // https://msdn.microsoft.com/en-us/library/office/ff866933.aspx
+                    Search advancedSearch = _oApp.AdvancedSearch(sFolderScope, txtSearchString.Text, btnSearchSubfolders.Checked, Type.Missing);
 
-            if (advancedSearch.Results.Count > 0)
-            {
+                    if (advancedSearch.Results.Count > 0)
+                    {
 
-                DateTime _EndTime = DateTime.Now;
-                TimeSpan _objTime = _EndTime.Subtract(_StartTime);
-                MessageBox.Show("Search Completed. Total Email Records: " + advancedSearch.Results.Count.ToString() + ", Total Time in seconds : " + _objTime.TotalSeconds.ToString());
+                        DateTime _EndTime = DateTime.Now;
+                        TimeSpan _objTime = _EndTime.Subtract(_StartTime);
+                        MessageBox.Show("Search Completed. Total Email Records: " + advancedSearch.Results.Count.ToString() + ", Total Time in seconds : " + _objTime.TotalSeconds.ToString());
 
-            }
+                    }
+                    else
+                        MessageBox.Show("No results found.");
+
+                }
+
+ 
 
         }
 
@@ -160,15 +174,35 @@ namespace OomExplore
                     Outlook.OlFolderDisplayMode.olFolderDisplayNormal);
                 string filter = txtInstantSearchCriteria.Text;
 
-                //string filter = "subject:" +
-                //    "\"" + "Office 2007" + "\"" +
-                //    " received:(last month)";
-
-                //string filter = "subject:"Test" received:(last month)"
-                //    "\"" + "Office 2007" + "\"" +
-                //    " received:(last month)";
-
                 explorer.Search(filter, Outlook.OlSearchScope.olSearchScopeAllFolders);
+                explorer.Display();
+            }
+            else
+            {
+                MessageBox.Show("Instant Search is not enabled for the mailbox store.");
+
+            }
+        }
+
+ 
+
+        private void cmboJoin1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInstantSearchInbox_Click(object sender, EventArgs e)
+        {
+            if (_oApp.Session.DefaultStore.IsInstantSearchEnabled)
+            {
+                Outlook.Explorer explorer = _oApp.Explorers.Add(
+                    _oApp.Session.GetDefaultFolder(
+                    Outlook.OlDefaultFolders.olFolderInbox)
+                    as Outlook.Folder,
+                    Outlook.OlFolderDisplayMode.olFolderDisplayNormal);
+                string filter = txtInstantSearchCriteria.Text;
+
+                explorer.Search(filter, Outlook.OlSearchScope.olSearchScopeCurrentFolder);
                 explorer.Display();
             }
             else

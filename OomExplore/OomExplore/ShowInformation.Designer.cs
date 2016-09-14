@@ -36,21 +36,23 @@ namespace OomExplore
             this.txtInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInformation.Location = new System.Drawing.Point(16, 15);
+            this.txtInformation.Location = new System.Drawing.Point(3, 2);
             this.txtInformation.Margin = new System.Windows.Forms.Padding(4);
             this.txtInformation.Multiline = true;
             this.txtInformation.Name = "txtInformation";
             this.txtInformation.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtInformation.Size = new System.Drawing.Size(821, 448);
+            this.txtInformation.Size = new System.Drawing.Size(853, 475);
             this.txtInformation.TabIndex = 0;
             this.txtInformation.WordWrap = false;
+            this.txtInformation.TextChanged += new System.EventHandler(this.txtInformation_TextChanged);
             // 
             // ShowInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 479);
+            this.ClientSize = new System.Drawing.Size(859, 479);
             this.Controls.Add(this.txtInformation);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ShowInformation";
             this.Text = "Information";
@@ -63,6 +65,8 @@ namespace OomExplore
         #endregion
 
         public System.Windows.Forms.TextBox txtInformation;
+
+
 
     }
 }

@@ -26,7 +26,7 @@ namespace OomExplore
         string _DefaultMessageFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
         string _DefaultContactFilter = "[MessageClass]>='IPM.Contact' AND [MessageClass]<='IPM.Contact.ZZZ'";
         string _DefaultAppointmentFilter = "[MessageClass]>='IPM.Appointment' AND [MessageClass]<='IPM.Appointment.ZZZ'";
-        string _DefaultTaskFilter = "[MessageClass]>='IPM.Appointment' AND [MessageClass]<='IPM.Task.ZZZ'";
+       // string _DefaultTaskFilter = "[MessageClass]>='IPM.Appointment' AND [MessageClass]<='IPM.Task.ZZZ'";
         string _UseMessageFilter = string.Empty;
         string _UseContactFilter = string.Empty;
         string _UseAppointmentFilter = string.Empty; 
@@ -83,6 +83,8 @@ namespace OomExplore
 
         private void tvFolders_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
             if (e.Node.Tag != null)
             {
 
@@ -97,6 +99,8 @@ namespace OomExplore
                 else
                     listView1.ContextMenuStrip = cmsItems;
             }
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
  
         }
 
@@ -154,49 +158,7 @@ namespace OomExplore
                     LoadViewForDefault(ref oListView);
                     break;
             }
-            //if (iFolderType == 1)
-            //{
-            //    LoadViewForStoreFolder(ref oListView); 
-            //}
-
-            //if (iFolderType == 2)  // "IPM.Contact"
-            //{
-            //    string sUseFilter = string.Empty;
-            //    //sUseFilter = "@SQL=[MessageClass] like 'IPM.Note%";
-            //    //sUseFilter = "[MessageClass]>='IPM.Note' AND [MessageClass]<='IPM.Note.ZZZ'";
-            //    LoadViewForMessageFolder(ref oListView, _UseMessageFilter);
-                
-            //}
-
-            //if (iFolderType == 3)  // "IPM.Contact"
-            //{
-            //    LoadViewForContactFolder(ref oListView, _UseContactFilter);
-
-            //}
-
-            //if (iFolderType == 4)  // "IPM.Appointment"
-            //{
-            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
-
-            //}
-
-            //if (iFolderType == 5)  // "IPM.Task"
-            //{
-            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
-
-            //}
-
-            //if (iFolderType == 6)  // "IPM.StickyNote"
-            //{
-            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
-
-            //}
-
-            //if (iFolderType == 6)  // "IPM.Activity"
-            //{
-            //    //LoadViewForContactFolder(ref oListView, _UseContactFilter);
-
-            //}
+             
 
       
         }
@@ -220,25 +182,25 @@ namespace OomExplore
                 oListView.GridLines = true;
                 //oListView.Dock = DockStyle.Fill;
  
-                oListView.Columns.Add("Subject", 150, HorizontalAlignment.Left);
-                oListView.Columns.Add("Location", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Start", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("StartTimeZone", 50, HorizontalAlignment.Left);
-                oListView.Columns.Add("End", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("EndTimeZone", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Organizer", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("RequiredAttendees", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("OptionalAttendees", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Subject", 300, HorizontalAlignment.Left);
+                oListView.Columns.Add("Location", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("Start", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("StartTimeZone", 2100, HorizontalAlignment.Left);
+                oListView.Columns.Add("End", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("EndTimeZone", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("Organizer", 300, HorizontalAlignment.Left);
+                oListView.Columns.Add("RequiredAttendees", 300, HorizontalAlignment.Left);
+                oListView.Columns.Add("OptionalAttendees", 300, HorizontalAlignment.Left);
                 oListView.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
                 oListView.Columns.Add("MeetingStatus", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Size", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Size", 200, HorizontalAlignment.Left);
                 oListView.Columns.Add("EntryId", 100, HorizontalAlignment.Left);
 
 
  
 
                 Microsoft.Office.Interop.Outlook.AppointmentItem oAppointmentItem = null;
-                OutlookItem oItem = null;
+             
 
                 string sFilter = string.Empty;
                 sUseFilter = _DefaultAppointmentFilter;
@@ -384,17 +346,17 @@ namespace OomExplore
                 oListView.GridLines = true;
                 //oListView.Dock = DockStyle.Fill;
 
-                oListView.Columns.Add("FullName", 150, HorizontalAlignment.Left);
-                oListView.Columns.Add("ManagerName", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Title", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Department", 50, HorizontalAlignment.Left);
-                oListView.Columns.Add("PrimaryTelephoneNumber", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Email1Address", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("MessageClass", 100, HorizontalAlignment.Left);
-                oListView.Columns.Add("Size", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("FullName", 3000, HorizontalAlignment.Left);
+                oListView.Columns.Add("ManagerName", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("Title", 200, HorizontalAlignment.Left);
+                oListView.Columns.Add("Department", 150, HorizontalAlignment.Left);
+                oListView.Columns.Add("PrimaryTelephoneNumber", 150, HorizontalAlignment.Left);
+                oListView.Columns.Add("Email1Address", 150, HorizontalAlignment.Left);
+                oListView.Columns.Add("MessageClass", 150, HorizontalAlignment.Left);
+                oListView.Columns.Add("Size", 150, HorizontalAlignment.Left);
 
                 Microsoft.Office.Interop.Outlook.ContactItem oContactItem = null;
-                OutlookItem oItem = null;
+           
 
                 string sFilter = string.Empty;
                 sUseFilter = _DefaultContactFilter;
@@ -650,6 +612,8 @@ namespace OomExplore
 
         private void cmsFoldersCopyToFolder_Click(object sender, EventArgs e)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
             //FolderTag oFolderTag = (FolderTag) tvFolders.SelectedNode.Tag;
             if (tvFolders.SelectedNode.SelectedImageIndex == 1)
             {
@@ -676,11 +640,15 @@ namespace OomExplore
                 }
                 oForm = null;
             }
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private void cmsFoldersMoveToFolder_Click(object sender, EventArgs e)
         {
-             if (tvFolders.SelectedNode.SelectedImageIndex == 1)
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
+            if (tvFolders.SelectedNode.SelectedImageIndex == 1)
             {
                 MessageBox.Show("Move cannot be performed on a Store Node.  Select a folder in the store.", "Not supported");
             }
@@ -719,6 +687,8 @@ namespace OomExplore
                 }
                 oForm = null;
             }
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private void cmsFoldersNewFolder_Click(object sender, EventArgs e)
@@ -787,7 +757,7 @@ namespace OomExplore
 
         private void cmsFoldersProperties_Click(object sender, EventArgs e)
         {
-            
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
             //Microsoft.Office.Interop.Outlook.MAPIFolder oFolder = _oNS.GetFolderFromID(_CurrentFolderId, _CurrentStoreId);
             // Refresh folder and item view:  
@@ -825,14 +795,21 @@ namespace OomExplore
             Marshal.ReleaseComObject(oFolder);
             oFolder = null;
 
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Folders Properties";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
+
+             
         }
 
         private void cmsFoldersStoreProperties_Click(object sender, EventArgs e)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
             //Microsoft.Office.Interop.Outlook.MAPIFolder oFolder = _oNS.GetFolderFromID(_CurrentFolderId, _CurrentStoreId);
             // Refresh folder and item view:  
             TreeNode oParentNode = tvFolders.SelectedNode.Parent;
@@ -858,7 +835,10 @@ namespace OomExplore
             Marshal.ReleaseComObject(oStore);
             oStore = null;
 
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Folders Store Properties";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -866,14 +846,23 @@ namespace OomExplore
 
         private void cmsItemsProperties_Click(object sender, EventArgs e)
         {
+            ViewItemPropertiesByClass_AsText();
+            // ViewItemPropertiesByClass();
+        }
+
+        private void ViewItemPropertiesByClass_AsText()
+        {
+
             string sItem = string.Empty;
             ItemTag oItemTag = null;
             string sInfo = string.Empty;
 
             if (listView1.SelectedItems.Count > 0)
             {
- 
+
                 oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+
+
 
                 if (oItemTag != null)
                 {
@@ -890,7 +879,7 @@ namespace OomExplore
                             sInfo += "AutoForwarded: " + oItem.AutoForwarded.ToString() + "\r\n";
                             sInfo += "AutoResolvedWinner: " + oItem.AutoResolvedWinner.ToString() + "\r\n";
                             if (oItem.BCC != null)
-                            sInfo += "BCC: " + oItem.BCC + "\r\n";
+                                sInfo += "BCC: " + oItem.BCC + "\r\n";
                             sInfo += "BillingInformation: " + oItem.BillingInformation + "\r\n";
                             sInfo += "Body: " + oItem.Body + "\r\n";
                             sInfo += "BodyFormat: " + oItem.BodyFormat.ToString() + "\r\n";
@@ -965,6 +954,7 @@ namespace OomExplore
                 }
 
                 ShowInformation oForm = new ShowInformation();
+                oForm.WindowTitle = "Item Properties";
                 oForm.txtInformation.Text = sInfo;
                 oForm.ShowDialog();
                 oForm = null;
@@ -974,45 +964,245 @@ namespace OomExplore
                 MessageBox.Show("Nothing Selected", "Selection Required ");
             }
 
-            ////Microsoft.Office.Interop.Outlook.MAPIFolder oFolder = _oNS.GetFolderFromID(_CurrentFolderId, _CurrentStoreId);
-            //// Refresh folder and item view:  
-            //TreeNode oParentNode = tvFolders.SelectedNode.Parent;
-            //FolderTag oFolderTag = (FolderTag)tvFolders.SelectedNode.Tag;
-            ////_CurrentStoreId = oFolderTag.StoreID;
-            ////_CurrentFolderId = oFolderTag.EntryID;
-            //Microsoft.Office.Interop.Outlook.MAPIFolder oFolder = _oNS.GetFolderFromID(oFolderTag.EntryID, oFolderTag.StoreID);
-
-             
-
-
-            //sInfo += "AddressBookName: " + oFolder.AddressBookName + "\r\n";
-            //sInfo += "Class: " + oFolder.Class + "\r\n";
-            //sInfo += "DefaultItemType: " + oFolder.DefaultItemType.ToString() + "\r\n";
-            //sInfo += "DefaultMessageClass: " + oFolder.DefaultMessageClass + "\r\n";
-            //sInfo += "Description: " + oFolder.Description + "\r\n";
-            //sInfo += "EntryID: " + oFolder.EntryID + "\r\n";
-            //sInfo += "FolderPath: " + oFolder.FolderPath + "\r\n";
-            //sInfo += "FullFolderPath: " + oFolder.FullFolderPath + "\r\n";
-            ////sInfo += "InAppFolderSyncObject: " + oFolder.InAppFolderSyncObject.ToString() + "\r\n";
-            //sInfo += "IsSharePointFolder: " + oFolder.IsSharePointFolder.ToString() + "\r\n";
-            //sInfo += "Items.Count: " + oFolder.Items.Count.ToString() + "\r\n";
-            //sInfo += "InAppFolderSyncObject: " + oFolder.Name + "\r\n";
-            //sInfo += "ShowAsOutlookAB: " + oFolder.ShowAsOutlookAB.ToString() + "\r\n";
-            //sInfo += "StoreID: " + oFolder.StoreID + "\r\n";
-            //sInfo += "UnReadItemCount: " + oFolder.UnReadItemCount.ToString() + "\r\n";
-            //sInfo += "WebViewOn: " + oFolder.WebViewOn.ToString() + "\r\n";
-            //sInfo += "WebViewURL: " + oFolder.WebViewURL + "\r\n";
-
-
-            //Marshal.ReleaseComObject(oFolder);
-            //oFolder = null;
-
-            //ShowInformation oForm = new ShowInformation();
-            //oForm.txtInformation.Text = sInfo;
-            //oForm.ShowDialog();
-            //oForm = null;
+           
 
         }
+
+        private void ItemPropertiesLV_Default()
+        {
+
+        }
+
+        private void ViewItemPropertiesByClass()
+        {
+            string sItem = string.Empty;
+            ItemTag oItemTag = null;
+            string sInfo = string.Empty;
+
+            if (listView1.SelectedItems.Count > 0)
+            {
+
+                oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+
+                if (oItemTag != null)
+                {
+
+                    ListView oListView = new ListView();
+                    ItemPropertiesForm oItemPropertiesForm = new ItemPropertiesForm();
+
+                    //sInfo += GetPropertiesByItemType(oItemTag.DefaultMessageClass);
+                    switch (oItemTag.DefaultMessageClass)
+                    {
+                        case "IPM.Note":
+                            Add_ItemPropertiesLV_IPM_Note(ref oListView);
+                             
+                            oItemPropertiesForm.SetListView(ref oListView);
+
+                            oListView.Visible = true;
+
+                            oItemPropertiesForm.ShowDialog();
+                            break;
+                        default:
+                            Add_ItemPropertiesLV_IPM_Unknown(ref oListView);
+                            oItemPropertiesForm.SetListView(ref oListView);
+
+                            oListView.Visible = true;
+                            oItemPropertiesForm.ShowDialog();
+                            break;
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Nothing selected.");
+        }
+
+   
+        private void Add_ItemPropertiesLV_IPM_Unknown(ref ListView oListView)
+        {
+ 
+            //oListView.Visible = false;
+ 
+            oListView.Clear();
+            oListView.View = System.Windows.Forms.View.Details;
+            oListView.GridLines = true;
+            //oListView.Dock = DockStyle.Fill;
+ 
+            oListView.Columns.Add("Property", 700, HorizontalAlignment.Left);
+            oListView.Columns.Add("Value", 700, HorizontalAlignment.Left);
+ 
+            string sItem = string.Empty;
+            ItemTag oItemTag = null;
+            string sInfo = string.Empty;
+
+ 
+            oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+ 
+            if (oItemTag != null)
+            {
+
+                Microsoft.Office.Interop.Outlook.MailItem oItem = (Microsoft.Office.Interop.Outlook.MailItem)_oNS.GetItemFromID(oItemTag.EntryID, oItemTag.StoreID);
+   
+                oListView.Items.Add("Subject").SubItems.Add(oItem.Subject.ToString());
+                oListView.Items.Add("MessageClass").SubItems.Add(oItem.MessageClass.ToString());
+                oListView.Items.Add("EntryID").SubItems.Add(oItemTag.EntryID.ToString());
+                oListView.Items.Add("StoreID").SubItems.Add(oItemTag.StoreID.ToString());
+                if (oItem.BCC != null)
+                    oListView.Items.Add("BCC").SubItems.Add(oItem.BCC.ToString());
+                if (oItem.Body != null) oListView.Items.Add("Body").SubItems.Add(oItem.Body.ToString());
+                oListView.Items.Add("BodyFormat").SubItems.Add(oItem.BodyFormat.ToString());
+                if (oItem.Categories != null)
+                    oListView.Items.Add("Categories").SubItems.Add(oItem.Categories.ToString());
+                if (oItem.CC != null)
+                    oListView.Items.Add("CC").SubItems.Add(oItem.CC.ToString());
+
+                if (oItem.ConversationIndex != null) oListView.Items.Add("ConversationIndex").SubItems.Add(oItem.ConversationIndex.ToString());
+                if (oItem.ConversationTopic != null) oListView.Items.Add("ConversationTopic").SubItems.Add(oItem.ConversationTopic.ToString());
+
+                oListView.Items.Add("CreationTime").SubItems.Add(oItem.CreationTime.ToString());
+              
+                oListView.Items.Add("EntryID").SubItems.Add(oItem.EntryID.ToString());
+                oListView.Items.Add("Importance").SubItems.Add(oItem.Importance.ToString());
+                if (oItem.ItemProperties != null) oListView.Items.Add("ItemProperties").SubItems.Add(oItem.ItemProperties.ToString());
+                if (oItem.LastModificationTime != null) oListView.Items.Add("LastModificationTime").SubItems.Add(oItem.LastModificationTime.ToString());
+                if (oItem.MessageClass != null) oListView.Items.Add("MessageClass").SubItems.Add(oItem.MessageClass.ToString());
+                oListView.Items.Add("OutlookInternalVersion").SubItems.Add(oItem.MessageClass.ToString());
+                if (oItem.SendUsingAccount != null)
+                    oListView.Items.Add("SendUsingAccount").SubItems.Add(oItem.SendUsingAccount.ToString());
+
+                oListView.Items.Add("Sensitivity").SubItems.Add(oItem.Sensitivity.ToString());
+                oListView.Items.Add("Sent").SubItems.Add(oItem.Sent.ToString());
+                if (oItem.SentOn != null) oListView.Items.Add("SentOn").SubItems.Add(oItem.SentOn.ToString());
+                oListView.Items.Add("Size").SubItems.Add(oItem.Size.ToString());
+                if (oItem.SentOn != null) oListView.Items.Add("SentOn").SubItems.Add(oItem.SentOn.ToString());
+                if (oItem.SentOnBehalfOfName != null) oListView.Items.Add("SentOnBehalfOfName").SubItems.Add(oItem.SentOnBehalfOfName.ToString());
+                if (oItem.Subject != null) oListView.Items.Add("Subject").SubItems.Add(oItem.Subject.ToString());
+                oListView.Items.Add("Submitted").SubItems.Add(oItem.Submitted.ToString());
+                if (oItem.To != null) oListView.Items.Add("To").SubItems.Add(oItem.To.ToString());
+                oListView.Items.Add("UnRead").SubItems.Add(oItem.UnRead.ToString());
+                if (oItem.UserProperties != null) oListView.Items.Add("UserProperties").SubItems.Add(oItem.UserProperties.ToString());
+ 
+
+            }
+
+
+        }
+
+        private void Add_ItemPropertiesLV_IPM_Note(ref ListView oListView)
+        {
+ 
+            //oListView.Visible = false;
+ 
+            oListView.Clear();
+            oListView.View = System.Windows.Forms.View.Details;
+            oListView.GridLines = true;
+            //oListView.Dock = DockStyle.Fill;
+ 
+            oListView.Columns.Add("Property", 700, HorizontalAlignment.Left);
+            oListView.Columns.Add("Value", 700, HorizontalAlignment.Left);
+ 
+            string sItem = string.Empty;
+            ItemTag oItemTag = null;
+            string sInfo = string.Empty;
+
+ 
+            oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+ 
+            if (oItemTag != null)
+            {
+
+                Microsoft.Office.Interop.Outlook.MailItem oItem = (Microsoft.Office.Interop.Outlook.MailItem)_oNS.GetItemFromID(oItemTag.EntryID, oItemTag.StoreID);
+   
+                oListView.Items.Add("Subject").SubItems.Add(oItem.Subject.ToString());
+                oListView.Items.Add("MessageClass").SubItems.Add(oItem.MessageClass.ToString());
+                oListView.Items.Add("EntryID").SubItems.Add(oItemTag.EntryID.ToString());
+                oListView.Items.Add("StoreID").SubItems.Add(oItemTag.StoreID.ToString());
+
+                
+                oListView.Items.Add("AutoForwarded").SubItems.Add(oItem.AutoForwarded.ToString() );
+                oListView.Items.Add("Subject").SubItems.Add(oItem.Subject.ToString());
+                if (oItem.BCC != null)
+                    oListView.Items.Add("BCC").SubItems.Add(oItem.BCC.ToString());
+                if (oItem.BillingInformation != null)
+                    oListView.Items.Add("BillingInformation").SubItems.Add(oItem.BillingInformation.ToString());
+                oListView.Items.Add("Body").SubItems.Add(oItem.Body.ToString());
+                if (oItem.BillingInformation != null) 
+                    oListView.Items.Add("BillingInformation").SubItems.Add(oItem.BillingInformation.ToString());
+                 
+                oListView.Items.Add("BodyFormat").SubItems.Add(oItem.BodyFormat.ToString());
+            
+                if (oItem.Categories != null)
+                    oListView.Items.Add("Categories").SubItems.Add(oItem.Categories.ToString());
+                if (oItem.CC != null)
+                    oListView.Items.Add("CC").SubItems.Add(oItem.CC.ToString());
+  
+                oListView.Items.Add("Class").SubItems.Add(oItem.Class.ToString());
+                if (oItem.Companies != null) oListView.Items.Add("Companies").SubItems.Add(oItem.Companies.ToString());
+                if (oItem.ConversationIndex != null) 
+                    oListView.Items.Add("ConversationIndex").SubItems.Add(oItem.ConversationIndex.ToString());
+                if (oItem.ConversationTopic != null) oListView.Items.Add("ConversationTopic").SubItems.Add(oItem.ConversationTopic.ToString());
+
+                if (oItem.CreationTime != null) oListView.Items.Add("CreationTime").SubItems.Add(oItem.CreationTime.ToString());
+                if (oItem.DeferredDeliveryTime != null) oListView.Items.Add("DeferredDeliveryTime").SubItems.Add(oItem.DeferredDeliveryTime.ToString());
+                oListView.Items.Add("DeleteAfterSubmit").SubItems.Add(oItem.DeleteAfterSubmit.ToString());
+                oListView.Items.Add("DownloadState").SubItems.Add(oItem.DownloadState.ToString());
+                oListView.Items.Add("EnableSharedAttachments").SubItems.Add(oItem.EnableSharedAttachments.ToString());
+                if (oItem.EntryID != null) oListView.Items.Add("EntryID").SubItems.Add(oItem.EntryID.ToString());
+                if (oItem.ExpiryTime != null) oListView.Items.Add("ExpiryTime").SubItems.Add(oItem.ExpiryTime.ToString());
+                if (oItem.FlagDueBy != null) oListView.Items.Add("FlagDueBy").SubItems.Add(oItem.FlagDueBy.ToString());
+                if (oItem.FlagRequest != null) oListView.Items.Add("FlagRequest").SubItems.Add(oItem.FlagRequest.ToString());
+                if (oItem.FormDescription != null)
+                    if (oItem.FormDescription.DisplayName != null) 
+                        oListView.Items.Add("FormDescription.DisplayName ").SubItems.Add(oItem.FormDescription.DisplayName.ToString());
+                oListView.Items.Add("HasCoverSheet").SubItems.Add(oItem.HasCoverSheet.ToString());
+                oListView.Items.Add("Importance").SubItems.Add(oItem.Importance.ToString());
+                oListView.Items.Add("InternetCodepage").SubItems.Add(oItem.InternetCodepage.ToString());
+                if (oItem.ItemProperties != null) oListView.Items.Add("ItemProperties").SubItems.Add(oItem.ItemProperties.ToString());
+                if (oItem.LastModificationTime != null) oListView.Items.Add("LastModificationTime").SubItems.Add(oItem.LastModificationTime.ToString());
+                if (oItem.MessageClass != null) oListView.Items.Add("MessageClass").SubItems.Add(oItem.MessageClass.ToString());
+                if (oItem.Mileage != null) oListView.Items.Add("Mileage").SubItems.Add(oItem.Mileage.ToString());
+                oListView.Items.Add("OriginatorDeliveryReportRequested").SubItems.Add(oItem.OriginatorDeliveryReportRequested.ToString());
+                oListView.Items.Add("OutlookInternalVersion").SubItems.Add(oItem.MessageClass.ToString());
+                if (oItem.ReceivedByName != null) oListView.Items.Add("ReceivedByName").SubItems.Add(oItem.ReceivedByName.ToString());
+                if (oItem.ReceivedOnBehalfOfName != null) oListView.Items.Add("ReceivedOnBehalfOfName").SubItems.Add(oItem.ReceivedOnBehalfOfName.ToString());
+                if (oItem.ReceivedTime != null) oListView.Items.Add("ReceivedTime").SubItems.Add(oItem.ReceivedTime.ToString());
+                oListView.Items.Add("RecipientReassignmentProhibited").SubItems.Add(oItem.RecipientReassignmentProhibited.ToString());
+                if (oItem.Recipients != null) oListView.Items.Add("Recipients").SubItems.Add(oItem.Recipients.ToString());
+                oListView.Items.Add("ReminderPlaySound").SubItems.Add(oItem.ReminderPlaySound.ToString());
+                oListView.Items.Add("ReminderSet").SubItems.Add(oItem.ReminderSet.ToString());
+                if (oItem.ReminderTime != null) oListView.Items.Add("ReminderTime").SubItems.Add(oItem.ReminderTime.ToString());
+                oListView.Items.Add("RemoteStatus").SubItems.Add(oItem.RemoteStatus.ToString());
+                if (oItem.ReplyRecipientNames != null) oListView.Items.Add("ReplyRecipientNames").SubItems.Add(oItem.ReplyRecipientNames.ToString());
+                if (oItem.ReplyRecipients != null) oListView.Items.Add("ReplyRecipients").SubItems.Add(oItem.ReplyRecipients.ToString());
+                oListView.Items.Add("Saved").SubItems.Add(oItem.Saved.ToString());
+                if (oItem.SaveSentMessageFolder != null) oListView.Items.Add("SaveSentMessageFolder").SubItems.Add(oItem.SaveSentMessageFolder.ToString());
+                if (oItem.SenderEmailAddress != null) oListView.Items.Add("SenderEmailAddress").SubItems.Add(oItem.SenderEmailAddress.ToString());
+                if (oItem.SenderEmailType != null) oListView.Items.Add("SenderEmailType").SubItems.Add(oItem.SenderEmailType.ToString());
+                if (oItem.SenderName != null) oListView.Items.Add("SenderName").SubItems.Add(oItem.SenderName.ToString());
+                if (oItem.SendUsingAccount != null) oListView.Items.Add("SendUsingAccount").SubItems.Add(oItem.SendUsingAccount.ToString());
+
+                oListView.Items.Add("Sensitivity").SubItems.Add(oItem.Sensitivity.ToString());
+                oListView.Items.Add("Sent").SubItems.Add(oItem.Sent.ToString());
+                if (oItem.SentOn != null) oListView.Items.Add("SentOn").SubItems.Add(oItem.SentOn.ToString());
+                if (oItem.SentOnBehalfOfName != null) oListView.Items.Add("SentOnBehalfOfName").SubItems.Add(oItem.SentOnBehalfOfName.ToString());
+                oListView.Items.Add("Size").SubItems.Add(oItem.Size.ToString());
+                if (oItem.SentOn != null) oListView.Items.Add("SentOn").SubItems.Add(oItem.SentOn.ToString());
+                if (oItem.SentOnBehalfOfName != null) oListView.Items.Add("SentOnBehalfOfName").SubItems.Add(oItem.SentOnBehalfOfName.ToString());
+                oListView.Items.Add("Size").SubItems.Add(oItem.Size.ToString());
+                if (oItem.Subject != null) oListView.Items.Add("Subject").SubItems.Add(oItem.Subject.ToString());
+                oListView.Items.Add("Submitted").SubItems.Add(oItem.Submitted.ToString());
+                if (oItem.To != null) oListView.Items.Add("To").SubItems.Add(oItem.To.ToString());
+                oListView.Items.Add("UnRead").SubItems.Add(oItem.UnRead.ToString());
+                if (oItem.UserProperties != null) oListView.Items.Add("UserProperties").SubItems.Add(oItem.UserProperties.ToString());
+                if (oItem.VotingOptions != null) oListView.Items.Add("VotingOptions").SubItems.Add(oItem.VotingOptions.ToString());
+                if (oItem.VotingResponse != null) oListView.Items.Add("VotingResponse").SubItems.Add(oItem.VotingResponse.ToString());
+                if (oItem.MessageClass != null) oListView.Items.Add("MessageClass").SubItems.Add(oItem.MessageClass.ToString());
+
+            }
+
+
+        }
+
+ 
 
         private void mnuInfoAccountInformation_Click(object sender, EventArgs e)
         {
@@ -1021,6 +1211,7 @@ namespace OomExplore
             string sInfo = GetAccountInformation(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Account Information";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1163,6 +1354,8 @@ namespace OomExplore
         // https://msdn.microsoft.com/EN-US/library/office/ff184600.aspx
         Microsoft.Office.Interop.Outlook.Account GetAccountForFolder(Microsoft.Office.Interop.Outlook.Folder folder)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
             // Obtain the store on which the folder resides.
             Microsoft.Office.Interop.Outlook.Store store = folder.Store;
 
@@ -1176,9 +1369,14 @@ namespace OomExplore
                 {
                     // Return the account whose default delivery store
                     // matches the store of the given folder.
+
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
                     return account;
                 }
             }
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+
             // No account matches, so return null.
             return null;
         }
@@ -1188,6 +1386,7 @@ namespace OomExplore
             string sInfo = ExchangeUsers.GetCurrentUserInfo(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Current User";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1195,7 +1394,7 @@ namespace OomExplore
 
         private void mnuInfoExchUsersManager_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void mnuInfoExchUsersCurrentUserMemberOfDl_Click(object sender, EventArgs e)
@@ -1203,6 +1402,7 @@ namespace OomExplore
             string sInfo = ExchangeUsers.GetCurrentUserMembership(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Current User DL Membership";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1213,6 +1413,7 @@ namespace OomExplore
             string sInfo = OomColorCategories.EnumerateCategories(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Categories";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1224,6 +1425,7 @@ namespace OomExplore
             string sInfo = OomStores.EnumerateStores(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Stores";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1234,6 +1436,7 @@ namespace OomExplore
             string sInfo = OomAddressBook.EnumerateAddressLists(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Address Lists for Profile";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1244,6 +1447,7 @@ namespace OomExplore
             string sInfo = OomAddressBook.EnumerateGAL(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Enumerate GAL";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1254,6 +1458,7 @@ namespace OomExplore
             string sInfo = OomHiddenItems.GetCalendarWorkHoursXML(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Calendar Working Hours";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1264,7 +1469,15 @@ namespace OomExplore
             OutlookItem oOutlookItem = GetCurrentItemObjectAsOutlookItem();
 
             if (oOutlookItem != null)
+            {
+                //if (oOutlookItem.MessageClass == "IPM.Appointment")
+                //{
+                //    AppointmentItem oApptItem = (Microsoft.Office.Interop.Outlook.AppointmentItem)oOutlookItem;
+                //    oApptItem.Display();
+                //}
+                //else
                 oOutlookItem.Display();
+            }
 
         }
 
@@ -1291,6 +1504,7 @@ namespace OomExplore
             string sInfo = OomApplication.GetInfo(_oApp);
 
             ShowInformation oForm = new ShowInformation();
+            oForm.WindowTitle = "Application Information";
             oForm.txtInformation.Text = sInfo;
             oForm.ShowDialog();
             oForm = null;
@@ -1308,6 +1522,15 @@ namespace OomExplore
 
             oForm.ShowDialog();
             oForm = null;
+        }
+
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Old EmailForm oForm = new EmailForm(ref _oApp, ref  _oNS);
+
+            MessageForm oForm = new MessageForm(ref _oApp, ref  _oNS);
+            oForm.ShowDialog();
+
         }
 
 
