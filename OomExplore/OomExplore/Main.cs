@@ -832,6 +832,8 @@ namespace OomExplore
             sInfo += "IsOpen: " + oStore.IsOpen.ToString() + "\r\n";
             sInfo += "ExchangeStoreType: " + oStore.StoreID + "\r\n";
 
+
+
             Marshal.ReleaseComObject(oStore);
             oStore = null;
 
@@ -861,7 +863,7 @@ namespace OomExplore
             {
 
                 oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
-
+            
 
 
                 if (oItemTag != null)
@@ -875,79 +877,16 @@ namespace OomExplore
                     switch (oItemTag.DefaultMessageClass)
                     {
                         case "IPM.Note":
-                            Microsoft.Office.Interop.Outlook.MailItem oItem = (Microsoft.Office.Interop.Outlook.MailItem)_oNS.GetItemFromID(oItemTag.EntryID, oItemTag.StoreID);
-                            sInfo += "AutoForwarded: " + oItem.AutoForwarded.ToString() + "\r\n";
-                            sInfo += "AutoResolvedWinner: " + oItem.AutoResolvedWinner.ToString() + "\r\n";
-                            if (oItem.BCC != null)
-                                sInfo += "BCC: " + oItem.BCC + "\r\n";
-                            sInfo += "BillingInformation: " + oItem.BillingInformation + "\r\n";
-                            sInfo += "Body: " + oItem.Body + "\r\n";
-                            sInfo += "BodyFormat: " + oItem.BodyFormat.ToString() + "\r\n";
-                            //sInfo += "Categories: " + oItem.Categories + "\r\n";
-                            if (oItem.Categories != null)
-                                sInfo += "Categories: " + oItem.Categories.ToString() + "\r\n";
-                            if (oItem.CC != null)
-                                sInfo += "CC: " + oItem.CC + "\r\n";
-
-                            sInfo += "Class: " + oItem.Class.ToString() + "\r\n";
-                            sInfo += "Companies: " + oItem.Companies + "\r\n";
-                            sInfo += "ConversationIndex: " + oItem.ConversationIndex + "\r\n";
-                            sInfo += "ConversationTopic: " + oItem.ConversationTopic + "\r\n";
-                            sInfo += "CreationTime: " + oItem.CreationTime.ToString() + "\r\n";
-                            sInfo += "DeferredDeliveryTime: " + oItem.DeferredDeliveryTime.ToString() + "\r\n";
-                            sInfo += "DeleteAfterSubmit: " + oItem.DeleteAfterSubmit.ToString() + "\r\n";
-                            sInfo += "DownloadState: " + oItem.DownloadState.ToString() + "\r\n";
-                            sInfo += "EnableSharedAttachments: " + oItem.EnableSharedAttachments.ToString() + "\r\n";
-                            sInfo += "EntryID: " + oItem.EntryID + "\r\n";
-                            sInfo += "ExpiryTime: " + oItem.ExpiryTime.ToString() + "\r\n";
-                            sInfo += "FlagDueBy: " + oItem.FlagDueBy.ToString() + "\r\n";
-                            sInfo += "FlagRequest: " + oItem.FlagRequest + "\r\n";
-                            sInfo += "FlagStatus: " + oItem.FlagStatus.ToString() + "\r\n";
-                            sInfo += "FormDescription.DisplayName " + oItem.FormDescription.DisplayName + "\r\n";
-                            sInfo += "HasCoverSheet: " + oItem.HasCoverSheet.ToString() + "\r\n";
-                            sInfo += "AddressBookNameHTMLBody " + oItem.HTMLBody + "\r\n";
-                            sInfo += "Importance: " + oItem.Importance.ToString() + "\r\n";
-                            sInfo += "InternetCodepage: " + oItem.InternetCodepage.ToString() + "\r\n";
-                            sInfo += "ItemProperties: " + oItem.ItemProperties.ToString() + "\r\n";
-                            sInfo += "LastModificationTime: " + oItem.LastModificationTime.ToString() + "\r\n";
-                            sInfo += "MessageClass: " + oItem.MessageClass + "\r\n";
-                            sInfo += "Mileage: " + oItem.Mileage + "\r\n";
-                            sInfo += "OriginatorDeliveryReportRequested: " + oItem.OriginatorDeliveryReportRequested.ToString() + "\r\n";
-                            sInfo += "OutlookInternalVersion: " + oItem.OutlookInternalVersion.ToString() + "\r\n";
-                            sInfo += "OutlookVersion: " + oItem.OutlookVersion + "\r\n";
-                            sInfo += "ReceivedByName: " + oItem.ReceivedByName + "\r\n";
-                            sInfo += "ReceivedOnBehalfOfName: " + oItem.ReceivedOnBehalfOfName + "\r\n";
-                            sInfo += "ReceivedTime: " + oItem.ReceivedTime + "\r\n";
-                            sInfo += "RecipientReassignmentProhibited: " + oItem.RecipientReassignmentProhibited.ToString() + "\r\n";
-                            sInfo += "Recipients: " + oItem.Recipients.ToString() + "\r\n";
-                            sInfo += "ReminderPlaySound: " + oItem.ReminderPlaySound.ToString() + "\r\n";
-                            sInfo += "ReminderSet: " + oItem.ReminderSet.ToString() + "\r\n";
-                            sInfo += "ReminderTime: " + oItem.ReminderTime.ToString() + "\r\n";
-                            sInfo += "RemoteStatus: " + oItem.RemoteStatus.ToString() + "\r\n";
-                            sInfo += "ReplyRecipientNames: " + oItem.ReplyRecipientNames + "\r\n";
-                            sInfo += "ReplyRecipients: " + oItem.ReplyRecipients.ToString() + "\r\n";
-                            sInfo += "Saved: " + oItem.Saved.ToString() + "\r\n";
-                            sInfo += "SaveSentMessageFolder: " + oItem.SaveSentMessageFolder.ToString() + "\r\n";
-                            sInfo += "SenderEmailAddress: " + oItem.SenderEmailAddress + "\r\n";
-                            sInfo += "SenderEmailType: " + oItem.SenderEmailType + "\r\n";
-                            sInfo += "SenderName: " + oItem.SenderName + "\r\n";
-                            if (oItem.SendUsingAccount != null)
-                                sInfo += "SendUsingAccount: " + oItem.SendUsingAccount.ToString() + "\r\n";
-                            sInfo += "Sensitivity: " + oItem.Sensitivity.ToString() + "\r\n";
-                            sInfo += "Sent: " + oItem.Sent.ToString() + "\r\n";
-                            sInfo += "SentOn: " + oItem.SentOn.ToString() + "\r\n";
-                            sInfo += "SentOnBehalfOfName: " + oItem.SentOnBehalfOfName + "\r\n";
-                            sInfo += "Size: " + oItem.Size.ToString() + "\r\n";
-                            sInfo += "Subject: " + oItem.Subject + "\r\n";
-                            sInfo += "Submitted: " + oItem.Submitted.ToString() + "\r\n";
-                            sInfo += "TaskSubject: " + oItem.TaskSubject + "\r\n";
-                            sInfo += "To: " + oItem.To + "\r\n";
-                            sInfo += "UnRead: " + oItem.UnRead.ToString() + "\r\n";
-                            sInfo += "UserProperties: " + oItem.UserProperties.ToString() + "\r\n";
-                            sInfo += "VotingOptions: " + oItem.VotingOptions + "\r\n";
-                            sInfo += "VotingResponse: " + oItem.VotingResponse + "\r\n";
+                            sInfo += Get_IpmNoteProperties();
 
                             break;
+                        case "IPM.Appointment":
+                            sInfo += Get_IpmAppointmentProperties();
+
+
+                            break;
+
+ 
                         default:
                             break;
                     }
@@ -968,6 +907,203 @@ namespace OomExplore
 
         }
 
+        private string Get_IpmNoteProperties()
+        {  
+            string sItem = string.Empty;
+            ItemTag oItemTag = null;
+            string sInfo = string.Empty;
+
+
+            oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+
+            Microsoft.Office.Interop.Outlook.MailItem oItem = (Microsoft.Office.Interop.Outlook.MailItem)_oNS.GetItemFromID(oItemTag.EntryID, oItemTag.StoreID);
+
+            sInfo += "AutoForwarded: " + oItem.AutoForwarded.ToString() + "\r\n";
+            sInfo += "AutoResolvedWinner: " + oItem.AutoResolvedWinner.ToString() + "\r\n";
+            sInfo += "BCC: " + oItem.BCC + "\r\n";
+            if (oItem.BillingInformation != null) sInfo += "BillingInformation: " + oItem.BillingInformation + "\r\n";
+            if (oItem.Body != null)
+                sInfo += "Body: " + oItem.Body + "\r\n";
+            sInfo += "BodyFormat: " + oItem.BodyFormat.ToString() + "\r\n";
+            //sInfo += "Categories: " + oItem.Categories + "\r\n";
+            if (oItem.Categories != null)
+                sInfo += "Categories: " + oItem.Categories.ToString() + "\r\n";
+            if (oItem.CC != null)
+                sInfo += "CC: " + oItem.CC.ToString() + "\r\n";
+
+            sInfo += "Class: " + oItem.Class.ToString() + "\r\n";
+            if (oItem.Companies != null)
+                sInfo += "Companies: " + oItem.Companies + "\r\n";
+            if (oItem.ConversationIndex != null)
+                sInfo += "ConversationIndex: " + oItem.ConversationIndex + "\r\n";
+            if (oItem.ConversationTopic != null)
+                sInfo += "ConversationTopic: " + oItem.ConversationTopic + "\r\n";
+            if (oItem.CreationTime != null)
+                sInfo += "CreationTime: " + oItem.CreationTime.ToString() + "\r\n";
+            if (oItem.DeferredDeliveryTime != null) sInfo += "DeferredDeliveryTime: " + oItem.DeferredDeliveryTime.ToString() + "\r\n";
+            sInfo += "DeleteAfterSubmit: " + oItem.DeleteAfterSubmit.ToString() + "\r\n";
+            sInfo += "DownloadState: " + oItem.DownloadState.ToString() + "\r\n";
+            sInfo += "EnableSharedAttachments: " + oItem.EnableSharedAttachments.ToString() + "\r\n";
+
+            if (oItem.EntryID != null)
+                sInfo += "EntryID: " + oItem.EntryID + "\r\n";
+            if (oItem.ExpiryTime != null)
+                sInfo += "ExpiryTime: " + oItem.ExpiryTime.ToString() + "\r\n";
+            if (oItem.FlagDueBy != null)
+                sInfo += "FlagDueBy: " + oItem.FlagDueBy.ToString() + "\r\n";
+            if (oItem.FlagRequest != null)
+                sInfo += "FlagRequest: " + oItem.FlagRequest + "\r\n";
+            sInfo += "FlagStatus: " + oItem.FlagStatus.ToString() + "\r\n";
+            if (oItem.FormDescription != null)
+                sInfo += "FormDescription.DisplayName " + oItem.FormDescription.DisplayName + "\r\n";
+            sInfo += "HasCoverSheet: " + oItem.HasCoverSheet.ToString() + "\r\n";
+            if (oItem.HTMLBody != null)
+                sInfo += "AddressBookNameHTMLBody " + oItem.HTMLBody + "\r\n";
+            sInfo += "Importance: " + oItem.Importance.ToString() + "\r\n";
+            sInfo += "InternetCodepage: " + oItem.InternetCodepage.ToString() + "\r\n";
+            if (oItem.ItemProperties != null)
+                sInfo += "ItemProperties: " + oItem.ItemProperties.ToString() + "\r\n";
+            if (oItem.LastModificationTime != null)
+                sInfo += "LastModificationTime: " + oItem.LastModificationTime.ToString() + "\r\n";
+            if (oItem.MessageClass != null)
+                sInfo += "MessageClass: " + oItem.MessageClass + "\r\n";
+            sInfo += "Mileage: " + oItem.Mileage + "\r\n";
+            sInfo += "OriginatorDeliveryReportRequested: " + oItem.OriginatorDeliveryReportRequested.ToString() + "\r\n";
+            sInfo += "OutlookInternalVersion: " + oItem.OutlookInternalVersion.ToString() + "\r\n";
+            if (oItem.OutlookVersion != null)
+                sInfo += "OutlookVersion: " + oItem.OutlookVersion + "\r\n";
+            if (oItem.ReceivedByName != null) sInfo += "ReceivedByName: " + oItem.ReceivedByName + "\r\n";
+            if (oItem.ReceivedOnBehalfOfName != null)
+                sInfo += "ReceivedOnBehalfOfName: " + oItem.ReceivedOnBehalfOfName + "\r\n";
+            if (oItem.ReceivedTime != null)
+                sInfo += "ReceivedTime: " + oItem.ReceivedTime + "\r\n";
+            sInfo += "RecipientReassignmentProhibited: " + oItem.RecipientReassignmentProhibited.ToString() + "\r\n";
+            if (oItem.Recipients != null)
+                sInfo += "Recipients: " + oItem.Recipients.ToString() + "\r\n";
+            sInfo += "ReminderPlaySound: " + oItem.ReminderPlaySound.ToString() + "\r\n";
+            sInfo += "ReminderSet: " + oItem.ReminderSet.ToString() + "\r\n";
+            if (oItem.ReminderTime != null)
+                sInfo += "ReminderTime: " + oItem.ReminderTime.ToString() + "\r\n";
+            sInfo += "RemoteStatus: " + oItem.RemoteStatus.ToString() + "\r\n";
+            if (oItem.ReplyRecipientNames != null)
+                sInfo += "ReplyRecipientNames: " + oItem.ReplyRecipientNames + "\r\n";
+            if (oItem.ReplyRecipients != null)
+                sInfo += "ReplyRecipients: " + oItem.ReplyRecipients.ToString() + "\r\n";
+            sInfo += "Saved: " + oItem.Saved.ToString() + "\r\n";
+            if (oItem.SaveSentMessageFolder != null) sInfo += "SaveSentMessageFolder: " + oItem.SaveSentMessageFolder.ToString() + "\r\n";
+            if (oItem.SenderEmailAddress != null) sInfo += "SenderEmailAddress: " + oItem.SenderEmailAddress + "\r\n";
+            if (oItem.SenderEmailType != null)
+                sInfo += "SenderEmailType: " + oItem.SenderEmailType + "\r\n";
+
+
+            if (oItem.SenderName != null) sInfo += "SenderName: " + oItem.SenderName + "\r\n";
+            if (oItem.SendUsingAccount != null)
+                sInfo += "SendUsingAccount: " + oItem.SendUsingAccount.ToString() + "\r\n";
+            sInfo += "Sensitivity: " + oItem.Sensitivity.ToString() + "\r\n";
+            sInfo += "Sent: " + oItem.Sent.ToString() + "\r\n";
+            sInfo += "SentOn: " + oItem.SentOn.ToString() + "\r\n";
+            if (oItem.SentOnBehalfOfName != null) sInfo += "SentOnBehalfOfName: " + oItem.SentOnBehalfOfName + "\r\n";
+            sInfo += "Size: " + oItem.Size.ToString() + "\r\n";
+            if (oItem.Subject != null)
+                sInfo += "Subject: " + oItem.Subject + "\r\n";
+            sInfo += "Submitted: " + oItem.Submitted.ToString() + "\r\n";
+            if (oItem.TaskSubject != null)
+                sInfo += "TaskSubject: " + oItem.TaskSubject + "\r\n";
+            if (oItem.To != null)
+                sInfo += "To: " + oItem.To + "\r\n";
+            sInfo += "UnRead: " + oItem.UnRead.ToString() + "\r\n";
+            sInfo += "UserProperties: " + oItem.UserProperties.ToString() + "\r\n";
+            sInfo += "VotingOptions: " + oItem.VotingOptions + "\r\n";
+            sInfo += "VotingResponse: " + oItem.VotingResponse + "\r\n";
+
+            return sInfo;
+        }
+
+        private string Get_IpmAppointmentProperties()
+        {
+
+            {
+                string sItem = string.Empty;
+                ItemTag oItemTag = null;
+                string sInfo = string.Empty;
+
+                oItemTag = (ItemTag)listView1.SelectedItems[0].Tag;
+
+                Microsoft.Office.Interop.Outlook.AppointmentItem oItem = (Microsoft.Office.Interop.Outlook.AppointmentItem)_oNS.GetItemFromID(oItemTag.EntryID, oItemTag.StoreID);
+
+                sInfo += "AutoResolvedWinner: " + oItem.AutoResolvedWinner.ToString() + "\r\n";
+                if (oItem.Organizer != null) sInfo += "Organizer: " + oItem.Organizer + "\r\n";
+
+                if (oItem.RequiredAttendees != null) sInfo += "RequiredAttendees: " + oItem.RequiredAttendees + "\r\n";
+                if (oItem.OptionalAttendees != null) sInfo += "OptionalAttendees: " + oItem.OptionalAttendees + "\r\n";
+                if (oItem.BillingInformation != null) sInfo += "BillingInformation: " + oItem.BillingInformation + "\r\n";
+
+                if (oItem.Body != null)
+                    sInfo += "Body: " + oItem.Body + "\r\n";
+
+                //sInfo += "Categories: " + oItem.Categories + "\r\n";
+                if (oItem.Categories != null)
+                    sInfo += "Categories: " + oItem.Categories.ToString() + "\r\n";
+
+                sInfo += "Class: " + oItem.Class.ToString() + "\r\n";
+                if (oItem.Companies != null)
+                    sInfo += "Companies: " + oItem.Companies + "\r\n";
+                if (oItem.ConversationIndex != null)
+                    sInfo += "ConversationIndex: " + oItem.ConversationIndex + "\r\n";
+                if (oItem.ConversationTopic != null)
+                    sInfo += "ConversationTopic: " + oItem.ConversationTopic + "\r\n";
+                if (oItem.CreationTime != null)
+                    sInfo += "CreationTime: " + oItem.CreationTime.ToString() + "\r\n";
+
+
+                sInfo += "DownloadState: " + oItem.DownloadState.ToString() + "\r\n";
+
+
+                if (oItem.EntryID != null)
+                    sInfo += "EntryID: " + oItem.EntryID + "\r\n";
+
+
+                if (oItem.FormDescription != null)
+                    sInfo += "FormDescription.DisplayName " + oItem.FormDescription.DisplayName + "\r\n";
+
+                sInfo += "Importance: " + oItem.Importance.ToString() + "\r\n";
+                sInfo += "InternetCodepage: " + oItem.InternetCodepage.ToString() + "\r\n";
+                if (oItem.ItemProperties != null)
+                    sInfo += "ItemProperties: " + oItem.ItemProperties.ToString() + "\r\n";
+                if (oItem.LastModificationTime != null)
+                    sInfo += "LastModificationTime: " + oItem.LastModificationTime.ToString() + "\r\n";
+                if (oItem.MessageClass != null)
+                    sInfo += "MessageClass: " + oItem.MessageClass + "\r\n";
+                sInfo += "Mileage: " + oItem.Mileage + "\r\n";
+
+                sInfo += "OutlookInternalVersion: " + oItem.OutlookInternalVersion.ToString() + "\r\n";
+                if (oItem.OutlookVersion != null)
+                    sInfo += "OutlookVersion: " + oItem.OutlookVersion + "\r\n";
+
+                sInfo += "Recipients: " + oItem.Recipients.ToString() + "\r\n";
+                sInfo += "ReminderPlaySound: " + oItem.ReminderPlaySound.ToString() + "\r\n";
+
+
+                sInfo += "Saved: " + oItem.Saved.ToString() + "\r\n";
+
+
+
+
+                if (oItem.SendUsingAccount != null)
+                    sInfo += "SendUsingAccount: " + oItem.SendUsingAccount.ToString() + "\r\n";
+                sInfo += "Sensitivity: " + oItem.Sensitivity.ToString() + "\r\n";
+
+                sInfo += "Size: " + oItem.Size.ToString() + "\r\n";
+                if (oItem.Subject != null)
+                    sInfo += "Subject: " + oItem.Subject + "\r\n";
+
+                sInfo += "UnRead: " + oItem.UnRead.ToString() + "\r\n";
+                sInfo += "UserProperties: " + oItem.UserProperties.ToString() + "\r\n";
+
+
+                return sInfo;
+            }
+        }
         private void ItemPropertiesLV_Default()
         {
 

@@ -19,25 +19,58 @@ namespace OomExplore
             Microsoft.Office.Interop.Outlook._Store oStore;
             Microsoft.Office.Interop.Outlook.Folder oRootFolder;
 
-            oStores = oNS.Stores;
-            int iTotal = oStores.Count;
-            for (int iCount = iTotal; iCount != 0; iCount--)
+            try
             {
-                oStore = oStores[iCount];
-                oRootFolder = (Microsoft.Office.Interop.Outlook.Folder)oStore.GetRootFolder();
-                TreeNode oNode = oTreeView.Nodes.Add(oStore.DisplayName);
-                oNode.Tag = new FolderTag(oStore.StoreID, oRootFolder.EntryID, oRootFolder.DefaultMessageClass);
-                oNode.SelectedImageIndex = 1;
-                oNode.Nodes.Add("");
-                 
-                oNode = null;
-                Marshal.ReleaseComObject(oRootFolder);
-                Marshal.ReleaseComObject(oStore);
-                oRootFolder = null;
-                oStore = null;
+
+                oStores = oNS.Stores;
+                int iTotal = oStores.Count;
+                for (int iCount = iTotal; iCount != 0; iCount--)
+                {
+                    oStore = oStores[iCount];
+                }
             }
-            Marshal.ReleaseComObject(oStores);
-            oStores = null;
+            catch (Exception exLoopOnly)
+            {
+                string s = string.Empty;
+                s += "Message: " + exLoopOnly.Message + "\\r\\n";
+                s += "Message: " + exLoopOnly.InnerException + "\\r\\n";
+                s += "Message: " + exLoopOnly.Source + "\\r\\n";
+                MessageBox.Show(s, "Error while only enumerating stores.");
+
+            }
+
+            try
+            {
+
+                oStores = oNS.Stores;
+                int iTotal = oStores.Count;
+                for (int iCount = iTotal; iCount != 0; iCount--)
+                {
+                    oStore = oStores[iCount];
+                    oRootFolder = (Microsoft.Office.Interop.Outlook.Folder)oStore.GetRootFolder();
+                    TreeNode oNode = oTreeView.Nodes.Add(oStore.DisplayName);
+                    oNode.Tag = new FolderTag(oStore.StoreID, oRootFolder.EntryID, oRootFolder.DefaultMessageClass);
+                    oNode.SelectedImageIndex = 1;
+                    oNode.Nodes.Add("");
+
+                    oNode = null;
+                    Marshal.ReleaseComObject(oRootFolder);
+                    Marshal.ReleaseComObject(oStore);
+                    oRootFolder = null;
+                    oStore = null;
+                }
+                Marshal.ReleaseComObject(oStores);
+                oStores = null;
+            }
+            catch (Exception ex)
+            {
+                string s = string.Empty;
+                s += "Message: " + ex.Message + "\\r\\n";
+                s += "Message: " + ex.InnerException + "\\r\\n";
+                s += "Message: " + ex.Source + "\\r\\n";
+                MessageBox.Show(s, "Error enumerating stores.");
+
+            }
         }
 
         public static void AddFolderToTreeNode(ref Microsoft.Office.Interop.Outlook._NameSpace oNS, ref TreeNode oNode, string sStoreId, string sFolderId)
